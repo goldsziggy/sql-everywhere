@@ -1,0 +1,21 @@
+/*
+* @Author: Matthew Zygowicz
+* @Date:   2016-05-05 12:38:03
+* @Last Modified by:   Matthew Zygowicz
+* @Last Modified time: 2016-05-05 12:40:14
+*/
+
+.db_utils {
+  text-align: right;
+  left: 0;
+}
+
+.db_utils i{
+  padding: 5px;
+}
+
+
+/*.query-box  {
+  font-size: 5rem;
+}
+*/

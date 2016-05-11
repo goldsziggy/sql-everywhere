@@ -1,0 +1,32 @@
+/*
+* @Author: Matthew Zygowicz
+* @Date:   2016-04-30 09:00:41
+* @Last Modified by:   Matthew Zygowicz
+* @Last Modified time: 2016-05-02 06:58:13
+*/
+
+
+
+
+.query_box {
+  background-color: #FFF;
+  color: #000;
+  min-height: 300px;
+  border: 5px solid #EEE;
+}
+
+.query_button{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+/*.query-box  {
+  font-size: 5rem;
+}
+*/

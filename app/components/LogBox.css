@@ -1,0 +1,21 @@
+/*
+* @Author: Matthew Zygowicz
+* @Date:   2016-05-11 11:48:13
+* @Last Modified by:   Matthew Zygowicz
+* @Last Modified time: 2016-05-11 16:19:18
+*/
+
+
+.message_center{
+  text-align: center;
+  border: 2px solid;
+  height: 100%;
+}
+
+.text_box{
+  padding-right: 30px; 
+}
+
+.banner_override{
+  min-width: 0;
+}

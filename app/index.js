@@ -7,16 +7,11 @@ import routes from './routes';
 import configureStore from './store/configureStore';
 import './app.global.css';
 import {Map} from 'immutable';
+import {retrieveFromStorage} from './utils/storage';
 
 
-const store = configureStore();
-// store.dispatch(set_state({state: {
-//         username: 'Ziggy',
-//         finance: [],
-//         ui: {
-//             show_finance: false
-//         }
-//     }}));
+const store = configureStore(retrieveFromStorage());
+
 const history = syncHistoryWithStore(hashHistory, store);
 
 render(

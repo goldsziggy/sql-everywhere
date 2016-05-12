@@ -27,7 +27,6 @@ export default class CodeMirror extends Component {
       this.onChange = (editorState) => this.props.set_query({editorState});
       this.handleKeyCommand = this.handleKeyCommand.bind(this);
       this.run_query = this.run_query.bind(this);
-      this.interact = this.run_query.interact(this);
 
       this.options = {
             lineNumbers: true,
@@ -49,13 +48,10 @@ export default class CodeMirror extends Component {
       this.props.run_query(this.props.query);
     }
 
-    interact(cm){
-      console.log(cm.getValue());
-    }
     render() {
         return (
             <div>
-                <Codemirror value={this.props.query} onChange={this.props.set_query} options={this.options} interact={this.interact}/>
+                <Codemirror value={this.props.query} onChange={this.props.set_query} options={this.options}/>
                 <button className='waves-effect waves-light btn' onClick={this.run_query}>Run Query</button>
                 <button className='waves-effect waves-light btn'><Link to="/">Run Query In New Page</Link></button>
                 <button className='waves-effect waves-light btn'><Link to="/results">Run Query</Link></button>

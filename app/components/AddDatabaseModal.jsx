@@ -72,12 +72,16 @@ class AddDatabaseModal extends React.Component {
     this.refs.add_db_database_name.value = '';
     this.refs.add_db_username.value = '';
     this.refs.add_db_password.value = '';
+    this.refs.add_db_database_host.value = '';
+    this.refs.add_db_database_port.value = '';
   }
 
   submit_modal(){
     var data = {
       database_type: this.refs.add_db_database_type.value,
       database_name: this.refs.add_db_database_name.value,
+      database_host: this.refs.add_db_database_host.value,
+      database_port: this.refs.add_db_database_port.value,
       username: this.refs.add_db_username.value,
       password: this.refs.add_db_password.value
     }
@@ -115,6 +119,14 @@ class AddDatabaseModal extends React.Component {
               <div className="ms-TextField ms-TextField--underlined">
                 <label for="add_db_database_name" className='ms-Label'>Database Name</label>
                 <input ref="add_db_database_name" className='ms-TextField-field' type="text"/>
+              </div>
+              <div className="ms-TextField ms-TextField--underlined">
+                <label for="add_db_database_host" className='ms-Label'>Database Host</label>
+                <input ref="add_db_database_host" className='ms-TextField-field' type="text"/>
+              </div>
+              <div className="ms-TextField ms-TextField--underlined">
+                <label for="add_db_database_port" className='ms-Label'>Database Port</label>
+                <input ref="add_db_database_port" className='ms-TextField-field' type="text"/>
               </div>
               <div className="ms-TextField ms-TextField--underlined">
                 <label for="add_db_username" className='ms-Label'>Username</label>

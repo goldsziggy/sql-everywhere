@@ -30,6 +30,7 @@ node_modules
 .DS_Store
 
 # App packaged
+db.json
 dist
 release
 main.js

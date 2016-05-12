@@ -14,7 +14,7 @@ function mapStateToProps(state) {
 
   return {
       current_state: state.database.getIn(['show_database_modal']),
-      database_types: state.database.getIn(['available_database_types'])
+      database_types: state.database.getIn(['available_database_types']).toJS()
     };
 }
 

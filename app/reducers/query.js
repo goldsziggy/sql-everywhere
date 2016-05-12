@@ -6,12 +6,12 @@
 
 'use strict';
 
-import {Map, List} from 'immutable';
+import {Map, List, fromJS} from 'immutable';
 import {Editor, EditorState, RichUtils} from 'draft-js';
 import { RUN_QUERY, SET_QUERY, SET_EDITOR_STATE} from '../actions/query';
 
 // const DEFAULT_STATE = Map({query: {editorState: EditorState.createEmpty()}, data:{}});
-const DEFAULT_STATE = Map({query: '', data:{}});
+const DEFAULT_STATE = fromJS({query: '', data:{}});
 
 function set_editor_state(state, editorState){
   return state.setIn(['query', 'editorState'], editorState);

@@ -9,10 +9,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Sidebar from '../components/Sidebar';
 import * as DatabaseActions from '../actions/database';
+// import {toJS} from 'immutable';
 
 function mapStateToProps(state) {
   return {
-      databases: state.database.getIn(['databases']).toArray(),
+      databases: state.database.getIn(['databases']).toJS(),
       active_database: state.database.getIn(['active_database'])
     };
 }

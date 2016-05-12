@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Home from '../components/Home';
+import LogBoxContainer from './LogBoxContainer';
 import SidebarContainer from './SideBarContainer';
 import AddDatabaseModalContainer from './AddDatabaseModalContainer';
 import styles from './HomePage.css';
@@ -22,6 +23,9 @@ export default class HomePageContainer extends React.Component {
           <AddDatabaseModalContainer />
           <Home />
         </main>
+        <aside className={classNames(styles.full_screen, 'ms-Grid-col', 'ms-u-md3')}>
+          <LogBoxContainer />
+        </aside>
       </div>
     )
   }

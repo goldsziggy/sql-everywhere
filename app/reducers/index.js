@@ -10,11 +10,24 @@ import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 import database from './database';
 import query from './query';
+import message_center from './message_center';
+import {persistToStorage, retrieveFromStorage} from '../utils/storage';
 
 const rootReducer = combineReducers({
   database,
   query,
+  message_center,
   routing
 });
 
-export default rootReducer;
+const finalReducer = (state = {}, action) => {
+    // retrieveFromStorage();
+    const nextState = rootReducer(state, action);
+    // console.log(retrieveFromStorage());
+    persistToStorage(nextState);
+
+    return nextState;
+};
+
+
+export default finalReducer;

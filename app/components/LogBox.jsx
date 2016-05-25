@@ -27,20 +27,19 @@ export default class LogBox extends Component {
 //@TODO make each message it's own component
 //@TODO : create an event on the message icon... If clicked it opens the full message up inside a modal.
   build_message_list(self){
-    return this.props.messages.map(function(message, i){  
+    return self.props.messages.map(function(message, i){  
         var class_name = message.status ? 'ms-Icon ms-Icon--check ms-fontColor-greenDark' : 'ms-Icon ms-Icon--alert ms-fontColor-redDark';
         return (
-            
-              <div key={i} className={classNames(styles.banner_override, "ms-MessageBanner")}>
-                <div className="ms-MessageBanner-content">
-                  <div className={classNames(styles.text_box, "ms-MessageBanner-text")}>
-                    <i className={class_name}></i> {message.message}
-                  </div>
+            <div key={i} className={classNames(styles.banner_override, "ms-MessageBanner")}>
+              <div className="ms-MessageBanner-content">
+                <div className={classNames(styles.text_box, "ms-MessageBanner-text")}>
+                  <i className={class_name}></i> {message.message ? message.message : {}}
                 </div>
                 <button className="ms-MessageBanner-close" onClick={ () => self.props.remove_message(message)}>
                   <i className="ms-Icon ms-Icon--x"></i>
                 </button>
               </div>
+            </div>
           )
       })
   }

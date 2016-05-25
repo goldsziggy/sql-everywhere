@@ -6,18 +6,10 @@
 
 'use strict';
 
-/*
-* @Author: ziggy
-* @Date:   2016-04-19 12:08:22
-* @Last Modified by:   Matthew Zygowicz
-*/
-
-'use strict';
-
-
 import React from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router';
+// import unified_sql from 'unified-sql';
 
 class AddDatabaseModal extends React.Component {
 
@@ -25,31 +17,40 @@ class AddDatabaseModal extends React.Component {
     current_state: React.PropTypes.bool.isRequired,
     toggle_add_database: React.PropTypes.func.isRequired,
     add_database: React.PropTypes.func.isRequired,
-    database_types: React.PropTypes.array.isRequired
+    database_types: React.PropTypes.array.isRequired,
+    get_database_types_action: React.PropTypes.func.isRequired
   };
 
   constructor(props, context){
     super(props, context);
     this.submit_modal = this.submit_modal.bind(this);
-    this.generate_select_html = this.generate_select_html(this);
+    this.generate_select_html = this.generate_select_html.bind(this);
+    this.get_db_types = this.get_db_types.bind(this);
+
+  }
+
+  get_db_types(){
+    if(this.props.database_types.length < 1){
+      this.props.get_database_types_action();
+    }
   }
 
   componentDidUpdate(props, state){
     if(this.props.current_state === true){
-      var self = this.props;  // This is done for scoping the complete function of the Modal
       $('#add_database_modal').show();
-      // $('#add_database_modal').openModal(
-      //     {complete: function(){
-      //         self.toggle_add_database(false);
-      //     }});
     }
     else
       $('#add_database_modal').hide();
-      // $('#add_database_modal').closeModal();
   }
 
   componentDidMount() {
-    $('#add_database_modal').hide();  
+    this.get_db_types();
+    if(this.props.current_state === true){
+      $('#add_database_modal').show();
+    }
+    else
+      $('#add_database_modal').hide();
+
     $('#add_database_modal .ms-Dropdown').Dropdown();  
      /** Add is-active class - changes border color to theme primary */
     $('#add_database_modal').find('.ms-TextField-field').on('focus', function() {
@@ -62,9 +63,10 @@ class AddDatabaseModal extends React.Component {
     });
   }
 
-  generate_select_html(){
-    return this.props.database_types.map(function(db,i){
-      return <option key={i} value={db} >{db}</option>
+  generate_select_html(self){
+    console.log(self.props.database_types);
+    return self.props.database_types.map(function(db,i){
+      return <option key={i} value={db.key} >{db.name}</option>
     });
   }
 
@@ -113,7 +115,7 @@ class AddDatabaseModal extends React.Component {
                 <label for="add_db_database_type" className='ms-Label'>Database Type</label>
                 <i className="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
                 <select ref="add_db_database_type" className="ms-Dropdown-select">
-                  {this.generate_select_html}
+                  {this.generate_select_html(this)}
                 </select>
               </div>
               <div className="ms-TextField ms-TextField--underlined">

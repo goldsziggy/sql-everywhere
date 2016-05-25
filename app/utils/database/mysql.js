@@ -27,20 +27,6 @@ export default class MySQL {
     });
   }
 
-  open_connection(){
-    this.connection =  mysql.createConnection({
-      host: this.host,
-      user: this.user,
-      password: this.password,
-      database: this.db,
-      port: this.por
-    });
-  }
-
-  close_connection(){
-    this.connection.end();
-  }
-
   test_connection(call_back){
     this.connection.connect(function(err){
       if(err) return call_back(err);

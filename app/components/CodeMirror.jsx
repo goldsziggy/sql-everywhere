@@ -17,9 +17,10 @@ export default class CodeMirror extends Component {
   
   
   static propTypes = {
-      run_query: React.PropTypes.func.isRequired,
+      run_query_request: React.PropTypes.func.isRequired,
       set_query: React.PropTypes.func.isRequired,
       set_editor: React.PropTypes.func.isRequired,
+      active_database: React.PropTypes.object,
       query: React.PropTypes.string.isRequired
   };
 
@@ -47,7 +48,7 @@ export default class CodeMirror extends Component {
     }
 
     run_query(){
-      this.props.run_query(this.props.query);
+      this.props.run_query_action(this.props.query, this.props.active_database);
     }
 
     render() {

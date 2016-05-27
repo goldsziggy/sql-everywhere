@@ -121,6 +121,7 @@
     "react-router-redux": "^4.0.2",
     "redux": "^3.4.0",
     "redux-thunk": "^2.0.1",
+    "slickgrid": "^2.1.0-1",
     "source-map-support": "^0.4.0",
     "sybase": "^1.0.8",
     "unified-sql": "https://github.com/goldsziggy/unified-sql/tarball/14fc0a55e3714f51b8e44aa7ffcd2dfd6ac6ec12"

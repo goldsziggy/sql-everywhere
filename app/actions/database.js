@@ -1,5 +1,4 @@
 //import utils
-import MySQL from '../utils/database/mysql';
 import {build_message} from '../utils/messages';
 
 //import api

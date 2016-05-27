@@ -12,7 +12,8 @@ import * as QueryActions from '../actions/query';
 
 function mapStateToProps(state) {
   return {
-      query: state.query.getIn(['query'])
+      query: state.query.getIn(['query']),
+      active_database: state.database.getIn(['active_database'])
     };
 }
 

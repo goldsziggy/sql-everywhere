@@ -24,9 +24,6 @@ class Sidebar extends React.Component {
         this.build_database_list = this.build_database_list.bind(this);
     }
 
-    componentDidMount() {
-
-    }
 
     select_database(){
 

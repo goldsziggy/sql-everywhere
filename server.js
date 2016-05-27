@@ -8,7 +8,7 @@ import bodyParser from 'body-parser';
 import low from 'lowdb'
 import storage from 'lowdb/file-sync';
 import config from './webpack.config.development';
-import {get_all_database_types, test_db} from './server/db';
+import {get_all_database_types, test_db, run_query} from './server/db';
 
 const app = express();
 const compiler = webpack(config);
@@ -43,7 +43,22 @@ app.post('/api/database/test_connection', function(req,res){
       message = message.message;
     }
     
-    // var err = JSON.stringify({error: message})
+    res.status(500).send({error: message});
+  })
+});
+
+app.post('/api/database/run_query', function(req,res){
+  res.setHeader('Content-Type', 'application/json');
+  //type, database_host, database_port, user, password, database_name
+  run_query(req.body.db_type, req.body.db_host, req.body.db_port, req.body.db_user, req.body.db_pass, req.body.db_name, req.body.query)
+  .then(function(data){
+    res.send({data: data});
+  })
+  .catch(function(message){
+    if (message instanceof Error) {
+      message = message.message;
+    }
+    
     res.status(500).send({error: message});
   })
 });

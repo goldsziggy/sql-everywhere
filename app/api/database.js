@@ -22,6 +22,18 @@ export function test_connection(dispatch, db){
   })
 }
 
+export function run_query(dispatch, db, query){
+  return axios.post('http://localhost:3000/api/database/run_query', {
+    db_type: db.database_type,
+    db_name: db.database_name,
+    db_host: db.database_host,
+    db_port: db.database_port,
+    db_user: db.username,
+    db_pass: db.password,
+    query: query
+  })
+}
+
 export function get_database_types(){
   return axios.get('http://localhost:3000/api/database/types')
 }

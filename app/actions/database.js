@@ -28,10 +28,10 @@ export function toggle_add_database(is_shown){
   };
 }
 
-export function set_active_database(db){
+export function set_active_database(db_id){
   return{
     type: SET_ACTIVE_DATABASE,
-    database: db
+    database_id: db_id
   }
 }
 
@@ -44,7 +44,7 @@ export function add_database(database) {
 
 export function remove_database(database) {
   return {
-    type: DECREMENT_COUNTER,
+    type: REMOVE_DATABASE,
     database: database
   };
 }

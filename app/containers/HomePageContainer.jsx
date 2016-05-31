@@ -72,7 +72,6 @@ export default class HomePageContainer extends React.Component {
             </div>
           </div>
         </div>
-
       </div>
     )
   }

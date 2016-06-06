@@ -29,12 +29,35 @@ export default class CodeMirror extends Component {
       this.run_query = this.run_query.bind(this);
 
       require('codemirror/mode/sql/sql');
+
+      require('codemirror/addon/hint/show-hint');
+      require('codemirror/addon/hint/sql-hint');
+
       //SQL mode is set based on MIME type
       this.options = {
             lineNumbers: true,
             mode: 'text/x-sql',
-            theme: 'monokai'
+            theme: 'monokai',
+            extraKeys: {
+                "Shift-Space": "autocomplete", // this is set for mac os x,
+                "Ctrl-Space": "autocomplete"
+            }
         };
+    }
+    componentDidUpdate(prevProps, prevState) {
+          var codeMirrorImpl = this.refs.code_mirror.getCodeMirror();
+          var CodeMirror= this.refs.code_mirror.getCodeMirrorInstance();
+
+          CodeMirror.commands.autocomplete = function (cm) {
+            CodeMirror.showHint(cm, CodeMirror.hint.sql);
+          };
+
+          // var orig = CodeMirror.hint.sql;
+          // CodeMirror.hint.sql = function(cm) {
+          //   var inner = orig(cm) || {from: cm.getCursor(), to: cm.getCursor(), list: []};
+          //   inner.list.push("bozo");
+          //   return inner.
+          // };
     }
 
     componentDidMount() {
@@ -55,7 +78,7 @@ export default class CodeMirror extends Component {
         
         return (
             <div className={styles.code_mirror}>
-                <Codemirror value={this.props.query} onChange={this.props.set_query} options={this.options} />
+                <Codemirror ref='code_mirror' value={this.props.query} onChange={this.props.set_query} options={this.options} />
                 <div className="ms-CommandBar">
                   <div className="ms-CommandBar-mainArea">
                     <div className="ms-CommandBarItem">
